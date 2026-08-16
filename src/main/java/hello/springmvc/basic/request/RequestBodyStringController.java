@@ -39,7 +39,7 @@ public class RequestBodyStringController {
     @PostMapping("/request-body-string-v3")
     public HttpEntity<String> requestBodyStringV3(HttpEntity<String> httpEntity) throws IOException {
         String messageBody = httpEntity.getBody();
-        log.debug("messageBodyLength={}", messageBody.length());
+        log.debug("messageBodyLength={}", messageBody == null ? 0 : messageBody.length());
 
         return new HttpEntity<>("ok");
     }

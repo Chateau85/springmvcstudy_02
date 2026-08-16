@@ -21,10 +21,11 @@ Spring MVC의 요청 매핑, 요청·응답 데이터 처리와 HTTP 메시지 �
 
 ## 보안 및 의존성 점검
 
-예제 로그는 요청 본문, 쿠키, 헤더 값과 사용자명을 원문으로 기록하지 않습니다. CycloneDX SBOM은 다음 명령으로 생성할 수 있습니다.
+예제 로그는 요청 본문, 쿠키, 헤더 값과 사용자명을 원문으로 기록하지 않습니다. SpotBugs와 FindSecBugs 정적 분석 및 CycloneDX SBOM은 다음 명령으로 실행할 수 있습니다.
 
 ```powershell
+.\gradlew.bat spotbugsMain spotbugsTest
 .\gradlew.bat cyclonedxBom
 ```
 
-결과는 `build/reports/cyclonedx/`에 생성됩니다.
+결과는 각각 `build/reports/spotbugs/`와 `build/reports/cyclonedx/`에 생성됩니다.
