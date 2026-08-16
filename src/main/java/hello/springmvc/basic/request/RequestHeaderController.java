@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.Locale;
 
 @Slf4j
@@ -23,13 +23,11 @@ public class RequestHeaderController {
                           @RequestHeader MultiValueMap<String, String> headerMap,
                           @RequestHeader("host") String host,
                           @CookieValue(value = "myCookie", required = false) String cookie) {
-        log.info("request={}", request);
-        log.info("response={}", response);
-        log.info("httpMethod={}", httpMethod);
-        log.info("locale={}", locale);
-        log.info("headerMap={}", headerMap);
-        log.info("header host={}", host);
-        log.info("myCookie={}", cookie);
+        log.debug("method={}, requestURI={}", request.getMethod(), request.getRequestURI());
+        log.debug("responseType={}", response.getClass().getSimpleName());
+        log.debug("httpMethod={}, locale={}", httpMethod, locale);
+        log.debug("headerNames={}", headerMap.keySet());
+        log.debug("hostPresent={}, myCookiePresent={}", host != null, cookie != null);
 
         return "ok";
     }
