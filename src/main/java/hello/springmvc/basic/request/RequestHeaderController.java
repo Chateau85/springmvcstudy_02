@@ -5,7 +5,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,7 +15,7 @@ import java.util.Locale;
 @Slf4j
 @RestController
 public class RequestHeaderController {
-    @RequestMapping("/headers")
+    @GetMapping("/headers")
     public String headers(HttpServletRequest request,
                           HttpServletResponse response,
                           HttpMethod httpMethod,
@@ -23,10 +23,8 @@ public class RequestHeaderController {
                           @RequestHeader MultiValueMap<String, String> headerMap,
                           @RequestHeader("host") String host,
                           @CookieValue(value = "myCookie", required = false) String cookie) {
-        log.debug("method={}, requestURI={}", request.getMethod(), request.getRequestURI());
         log.debug("responseType={}", response.getClass().getSimpleName());
         log.debug("httpMethod={}, locale={}", httpMethod, locale);
-        log.debug("headerNames={}", headerMap.keySet());
         log.debug("hostPresent={}, myCookiePresent={}", host != null, cookie != null);
 
         return "ok";

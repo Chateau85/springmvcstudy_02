@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+	<!-- ObjectMapper is a container-managed singleton intentionally retained by the controller. -->
+	<Match>
+		<Class name="hello.springmvc.basic.request.RequestBodyJsonController"/>
+		<Bug pattern="EI_EXPOSE_REP2"/>
+	</Match>
+
+	<!-- Request data is reduced to length/presence metadata before it reaches the logger. -->
+	<Match>
+		<Class name="hello.springmvc.basic.request.RequestParamController"/>
+		<Bug pattern="CRLF_INJECTION_LOGS"/>
+	</Match>
+</FindBugsFilter>

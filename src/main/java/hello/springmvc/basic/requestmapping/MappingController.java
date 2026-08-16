@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class MappingController {
     private static final Logger log = LoggerFactory.getLogger(MappingController.class);
 
-    @RequestMapping(value = "/hello-basic")
+    @GetMapping("/hello-basic")
     public String hellBasic() {
         log.info("helloBasic");
         return "ok";
@@ -42,7 +42,7 @@ public class MappingController {
      */
     @GetMapping("/mapping/{userId}")
     public String mappingPath(@PathVariable String userId) {
-        log.info("mappingPath userId={}", userId);
+        log.info("mappingPath userIdLength={}", userId.length());
         return "ok";
     }
 
@@ -51,7 +51,7 @@ public class MappingController {
      */
     @GetMapping("/mapping/users/{userId}/orders/{orderId}")
     public String mappingPath(@PathVariable String userId, @PathVariable Long orderId) {
-        log.info("mappingPath userId={}, orderId={}", userId, orderId);
+        log.info("mappingPath userIdLength={}, orderIdPresent={}", userId.length(), orderId != null);
         return "ok";
     }
 
